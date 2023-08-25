@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding-left: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            margin: 0;
+            color: #555;
+        }
+        p {
+            margin: 5px 0;
+            color: #888;
+        }
+        button a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>KARLENS Library</h1>
+    <button><a href="{{ url_for('add') }}">Add New Book</a></button>
+    <ul>
+        {% for book in all_books %}
+        <li>
+            <h2>{{ book.title }}</h2>
+            <p>Author: {{ book.author }}</p>
+            <p>Rating: {{ book.rating }}</p>
+            <button><a href="{{ url_for('edit', author=book.author, rating=book.rating, title=book.title) }}">Edit</a></button>
+            <button><a href="{{ url_for('delete', author=book.author, title=book.title) }}">Delete</a></button>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
